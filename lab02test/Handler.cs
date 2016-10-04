@@ -304,7 +304,6 @@ namespace lab03
         {
             List<string> dataRows = Filehandler.GetSavedData();
             _allVehicles = DataParser.GetVehiclesFromSavedData(dataRows);
-
             //SEDAN: FYLL LISTORNA _motorcycles, _cars, _boats från _allVehicles
         }
 

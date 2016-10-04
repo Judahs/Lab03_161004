@@ -21,7 +21,6 @@ namespace lab03
                     dataList.Add(line);     //Read from file, add rows as long as possible
                     line = sr.ReadLine();
                 }
-                Console.ReadKey();
             }
             return dataList;
         }
