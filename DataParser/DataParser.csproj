@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5399A54A-C689-480E-B9F6-FC720EE8EC3D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{01113503-132B-47FA-B0A8-5E8DC89F0375}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>lab02test</RootNamespace>
-    <AssemblyName>lab02test</AssemblyName>
+    <RootNamespace>DataParser</RootNamespace>
+    <AssemblyName>DataParser</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,22 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handler.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="DataParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataParser\DataParser.csproj">
-      <Project>{01113503-132b-47fa-b0a8-5e8dc89f0375}</Project>
-      <Name>DataParser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Filehandling\Filehandling.csproj">
-      <Project>{a29f3f29-cd91-4896-90c9-a767f688cf09}</Project>
-      <Name>Filehandling</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Vehicle\Vehicle.csproj">
       <Project>{2f6f3bdc-e5b0-4ba0-b6c2-b7bf722f8ace}</Project>
       <Name>Vehicle</Name>

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicle", "Vehicle\Vehicle.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filehandling", "Filehandling\Filehandling.csproj", "{A29F3F29-CD91-4896-90C9-A767F688CF09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataParser", "DataParser\DataParser.csproj", "{01113503-132B-47FA-B0A8-5E8DC89F0375}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A29F3F29-CD91-4896-90C9-A767F688CF09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A29F3F29-CD91-4896-90C9-A767F688CF09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A29F3F29-CD91-4896-90C9-A767F688CF09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01113503-132B-47FA-B0A8-5E8DC89F0375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01113503-132B-47FA-B0A8-5E8DC89F0375}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01113503-132B-47FA-B0A8-5E8DC89F0375}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01113503-132B-47FA-B0A8-5E8DC89F0375}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

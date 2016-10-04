@@ -14,6 +14,7 @@ namespace lab03
         private List<Car> _cars;
         private List<Boat> _boats;
         private List<Motorcycle> _motorcycles;
+        private List<IVehicle> _allVehicles;
 
         public Handler()
         {
@@ -298,6 +299,15 @@ namespace lab03
         {       
             Console.Write(vehicleToPrint.GetMetersPerSecond);
         }
+
+        public void GetData()
+        {
+            List<string> dataRows = Filehandler.GetSavedData();
+            _allVehicles = DataParser.GetVehiclesFromSavedData(dataRows);
+
+            //SEDAN: FYLL LISTORNA _motorcycles, _cars_, _boats från _allVehicles
+        }
+
         public void Start()
         {
             bool executeAgain = true;
@@ -334,6 +344,12 @@ namespace lab03
                     }
                 }
             }
+        }
+        public void SaveData()
+        {
+            //FYLL _allVehicles FRÅN LISTORNA _motorcycles, _cars_, _boats
+            List<string> listOfRowsToSave = DataParser.CreateDataToSaveFromList(_allVehicles);
+            Filehandler.SaveData(listOfRowsToSave);
         }
     }
 }
