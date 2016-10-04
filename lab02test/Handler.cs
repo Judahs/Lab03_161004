@@ -305,7 +305,7 @@ namespace lab03
             List<string> dataRows = Filehandler.GetSavedData();
             _allVehicles = DataParser.GetVehiclesFromSavedData(dataRows);
 
-            //SEDAN: FYLL LISTORNA _motorcycles, _cars_, _boats från _allVehicles
+            //SEDAN: FYLL LISTORNA _motorcycles, _cars, _boats från _allVehicles
         }
 
         public void Start()
@@ -347,7 +347,7 @@ namespace lab03
         }
         public void SaveData()
         {
-            //FYLL _allVehicles FRÅN LISTORNA _motorcycles, _cars_, _boats
+            //FYLL _allVehicles FRÅN LISTORNA _motorcycles, _cars, _boats
             List<string> listOfRowsToSave = DataParser.CreateDataToSaveFromList(_allVehicles);
             Filehandler.SaveData(listOfRowsToSave);
         }
