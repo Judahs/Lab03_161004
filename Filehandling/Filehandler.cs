@@ -9,7 +9,7 @@ namespace lab03
 {
     public class Filehandler
     {
-        public static List<string> GetSavedData()
+        public List<string> GetSavedData()
         {
             List<string> dataList = new List<string>();
 
@@ -25,7 +25,7 @@ namespace lab03
             return dataList;
         }
 
-        public static void SaveData(List<string> listOfRowsToSave)
+        public void SaveData(List<string> listOfRowsToSave)
         {
             using (StreamWriter sw = new StreamWriter(@"programdata.csv"))
             {

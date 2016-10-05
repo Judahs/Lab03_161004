@@ -8,13 +8,15 @@ namespace lab03
 {
     public class DataParser
     {
-        public static List<IVehicle> GetVehiclesFromSavedData(List<string> dataRows)
+        public List<IVehicle> GetVehiclesFromSavedData(List<string> dataRows)
         {
-            return null;
+            List <IVehicle> testList = new List<IVehicle>();
+            return testList;
         }
 
-        public static List<string> CreateDataToSaveFromList(List<IVehicle> vehiclesList)
+        public List<string> CreateDataToSaveFromList(List<IVehicle> vehiclesList)
         {
+
             return null;
         }
     }

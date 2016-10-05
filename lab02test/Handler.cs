@@ -22,6 +22,7 @@ namespace lab03
             _cars = new List<Car>();
             _boats = new List<Boat>();
             _motorcycles = new List<Motorcycle>();
+            _allVehicles = new List<IVehicle>();
         }
         /// <summary>
         /// Simple function to print the menu, user can only advance in the menu by inputing 1,2,3,4 or 0
@@ -302,9 +303,16 @@ namespace lab03
 
         public void GetData()
         {
-            List<string> dataRows = Filehandler.GetSavedData();
-            _allVehicles = DataParser.GetVehiclesFromSavedData(dataRows);
-            //SEDAN: FYLL LISTORNA _motorcycles, _cars, _boats från _allVehicles
+            Filehandler fh = new Filehandler();
+            List<string> dataRows = fh.GetSavedData();
+            DataParser dp = new DataParser();
+            _allVehicles = dp.GetVehiclesFromSavedData(dataRows);
+            foreach (IVehicle currVehicle in _allVehicles)  //Put vehicle from in separate lists
+            {
+                if (currVehicle is Car) _cars.Add(currVehicle as Car);
+                if (currVehicle is Boat) _boats.Add(currVehicle as Boat);
+                if (currVehicle is Motorcycle) _motorcycles.Add(currVehicle as Motorcycle);
+            }
         }
 
         public void Start()
@@ -347,8 +355,8 @@ namespace lab03
         public void SaveData()
         {
             //FYLL _allVehicles FRÅN LISTORNA _motorcycles, _cars, _boats
-            List<string> listOfRowsToSave = DataParser.CreateDataToSaveFromList(_allVehicles);
-            Filehandler.SaveData(listOfRowsToSave);
+            //List<string> listOfRowsToSave = DataParser.CreateDataToSaveFromList(_allVehicles);
+            //Filehandler.SaveData(listOfRowsToSave);
         }
     }
 }
