@@ -13,7 +13,11 @@ namespace lab03
             List <IVehicle> testList = new List<IVehicle>();
             return testList;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_allVehicles"></param>
+        /// <returns></returns>
         public List<string> CreateDataToSaveFromList(IEnumerable<IVehicle> _allVehicles)
         {
             List<string> stringList = new List<string>();
