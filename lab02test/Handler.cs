@@ -269,7 +269,7 @@ namespace lab03
             Console.WriteLine("\n--{0} cars in stock--", _cars.Count);
             foreach (Car thisCar in _cars)
             {
-                Console.Write("Car {0} – ", counter);
+                Console.Write("Car {0}, {1} – ", counter, thisCar.Name);
                 PrintSpeedInMetersPerSecond(thisCar);
                 Console.WriteLine(" m/s");
                 counter++;
@@ -278,7 +278,7 @@ namespace lab03
             Console.WriteLine("\n--{0} boats in stock--", _boats.Count);
             foreach (Boat thisBoat in _boats)
             {
-                Console.Write("Boat {0} – ", counter);
+                Console.Write("Boat {0}, {1} – ", counter, thisBoat.Name);
                 PrintSpeedInMetersPerSecond(thisBoat);
                 Console.WriteLine(" m/s");
                 counter++;
@@ -287,7 +287,7 @@ namespace lab03
             Console.WriteLine("\n--{0} motorcycles in stock--", _motorcycles.Count);
             foreach (Motorcycle thisMotorcycle in _motorcycles)
             {
-                Console.Write("Motorcycle {0} – ", counter);
+                Console.Write("Motorcycle {0}, {1} – ", counter, thisMotorcycle.Name);
                 PrintSpeedInMetersPerSecond(thisMotorcycle);
                 Console.WriteLine(" m/s");
                 counter++;
@@ -354,9 +354,25 @@ namespace lab03
         }
         public void SaveData()
         {
-            //FYLL _allVehicles FRÅN LISTORNA _motorcycles, _cars, _boats
-            //List<string> listOfRowsToSave = DataParser.CreateDataToSaveFromList(_allVehicles);
-            //Filehandler.SaveData(listOfRowsToSave);
+            _allVehicles.Clear();                       //Clear the list, 
+            _allVehicles.AddRange(_cars);               //and put the updated list of objects in it
+            _allVehicles.AddRange(_motorcycles);        //before sending it to functions for saving data
+            _allVehicles.AddRange(_boats);
+
+            DataParser dp = new DataParser();
+            List<string> listOfRowsToSave = dp.CreateDataToSaveFromList(_allVehicles);
+            Filehandler fh = new Filehandler();
+            try
+            {
+                fh.SaveData(listOfRowsToSave);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Press any key to exit program.");
+                Console.ReadKey();
+            }
+            
         }
     }
 }

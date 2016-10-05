@@ -27,11 +27,19 @@ namespace lab03
 
         public void SaveData(List<string> listOfRowsToSave)
         {
-            using (StreamWriter sw = new StreamWriter(@"programdata.csv"))
+            try
             {
-                for (int i = 0; i < listOfRowsToSave.Count; i++)
-                    sw.WriteLine(listOfRowsToSave[i]);
+                using (StreamWriter sw = new StreamWriter(@"programdata.csv"))
+                {
+                    foreach (string item in listOfRowsToSave)
+                        sw.WriteLine(item);
+                }
             }
+            catch (Exception)
+            {
+                throw new Exception ("Could not save data to programdata.csv - the file may be read-only or used in another program.");
+            }
+
         }
     }
 }

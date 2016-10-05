@@ -16,8 +16,15 @@ namespace lab03
 
         public List<string> CreateDataToSaveFromList(List<IVehicle> vehiclesList)
         {
-
-            return null;
+            List<string> stringList = new List<string>();
+            foreach (IVehicle currVehicle in vehiclesList)
+            {
+                string listItem;
+                listItem = currVehicle.GetType().Name;      //store the type in string (Car, Boat or Motorcycle).
+                listItem += string.Format("; {0}; {1}", currVehicle.Name, currVehicle.GetSpeed());
+                stringList.Add(listItem);
+            }
+            return stringList;
         }
     }
 }
