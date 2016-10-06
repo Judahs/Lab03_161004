@@ -50,9 +50,8 @@ namespace lab03
         public string RandomNames()
         {
             List<string> randomNamesList = new List<string>() { "Petrus", "Judas Taddeus", "Johannes", "Judas Iskariot", "Matteus", "Tomas", "Jakob", "Andreas", "Filippos", "Jakob", "Simon", "Bartolomaios" };
-            int l = randomNamesList.Count;
             Random r = new Random();
-            int num = r.Next(l);
+            int num = r.Next(randomNamesList.Count);
             return randomNamesList[num];
         }
 
