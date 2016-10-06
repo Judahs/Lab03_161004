@@ -363,9 +363,6 @@ namespace lab03
             //_allVehicles.Clear();                       //Clear the list, 
             var _allVehicles = _cars.Cast<IVehicle>().Concat(_boats.Cast<IVehicle>()).Concat(_motorcycles.Cast<IVehicle>());
 
-            //_allVehicles.AddRange(_cars);               //and put the updated list of objects in it
-            //_allVehicles.AddRange(_motorcycles);        //before sending it to functions for saving data
-            //_allVehicles.AddRange(_boats);
             DataParser dp = new DataParser();
             List<string> listOfRowsToSave = dp.CreateDataToSaveFromList(_allVehicles);
             Filehandler fh = new Filehandler();
