@@ -15,6 +15,7 @@ namespace lab03
         private List<Boat> _boats;
         private List<Motorcycle> _motorcycles;
         private List<IVehicle> _allVehicles;
+        public List<IVehicle> _allSavedVehicles;
 
         public Handler()
         {
@@ -23,31 +24,32 @@ namespace lab03
             _boats = new List<Boat>();
             _motorcycles = new List<Motorcycle>();
             _allVehicles = new List<IVehicle>();
+            _allSavedVehicles = new List<IVehicle>();
         }
 
         /// <summary>
         /// Loads the separate lists _cars, _boats, _motorcycles so they can be used in the program
         /// </summary>
-        private void LoadSeparateVehicleLists()
-        {
-            foreach (IVehicle currVehicle in _allVehicles)  //Put vehicle from _allVehicles in separate lists
-            {
-                if (currVehicle is Car) _cars.Add(currVehicle as Car);
-                if (currVehicle is Boat) _boats.Add(currVehicle as Boat);
-                if (currVehicle is Motorcycle) _motorcycles.Add(currVehicle as Motorcycle);
-            }
-        }
+        //private void LoadSeparateVehicleLists()
+        //{
+        //    foreach (IVehicle currVehicle in _allVehicles)  //Put vehicle from _allVehicles in separate lists
+        //    {
+        //        if (currVehicle is Car) _cars.Add(currVehicle as Car);
+        //        if (currVehicle is Boat) _boats.Add(currVehicle as Boat);
+        //        if (currVehicle is Motorcycle) _motorcycles.Add(currVehicle as Motorcycle);
+        //    }
+        //}
 
         /// <summary>
         /// Prepares the _allVehicle List with the updated data, so it can be used when saving to file
         /// </summary>
-        private void LoadFinalListToSave()
-        {
-            _allVehicles.Clear();                       //Clear the list, 
-            _allVehicles.AddRange(_cars);               //and put the updated list of objects in it
-            _allVehicles.AddRange(_motorcycles);        //before sending it to functions for saving data
-            _allVehicles.AddRange(_boats);
-        }
+        //private void LoadFinalListToSave()
+        //{
+        //    _allVehicles.Clear();                       //Clear the list, 
+        //    _allVehicles.AddRange(_cars);               //and put the updated list of objects in it
+        //    _allVehicles.AddRange(_motorcycles);        //before sending it to functions for saving data
+        //    _allVehicles.AddRange(_boats);
+        //}
 
         /// <summary>
         /// Simple function to print the menu, user can only advance in the menu by inputing 1,2,3,4 or 0
@@ -331,8 +333,15 @@ namespace lab03
             Filehandler fh = new Filehandler();
             List<string> dataRows = fh.GetSavedData();
             DataParser dp = new DataParser();
-            _allVehicles = dp.GetVehiclesFromSavedData(dataRows);
-            LoadSeparateVehicleLists();
+            _allSavedVehicles = dp.GetVehiclesFromSavedData(dataRows);
+            foreach (IVehicle currVehicle in _allSavedVehicles)  //Put vehicle from in separate lists
+            {
+                if (currVehicle is Car) _cars.Add(currVehicle as Car);
+                if (currVehicle is Boat) _boats.Add(currVehicle as Boat);
+                if (currVehicle is Motorcycle) _motorcycles.Add(currVehicle as Motorcycle);
+            }
+
+            Console.ReadKey();
         }
 
         public void Start()
@@ -374,8 +383,13 @@ namespace lab03
         }
         public void SaveData()
         {
-            LoadFinalListToSave();
 
+            //_allVehicles.Clear();                       //Clear the list, 
+            var _allVehicles = _cars.Cast<IVehicle>().Concat(_boats.Cast<IVehicle>()).Concat(_motorcycles.Cast<IVehicle>());
+
+            //_allVehicles.AddRange(_cars);               //and put the updated list of objects in it
+            //_allVehicles.AddRange(_motorcycles);        //before sending it to functions for saving data
+            //_allVehicles.AddRange(_boats);
             DataParser dp = new DataParser();
             List<string> listOfRowsToSave = dp.CreateDataToSaveFromList(_allVehicles);
             Filehandler fh = new Filehandler();
