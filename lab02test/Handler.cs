@@ -15,6 +15,7 @@ namespace lab03
         private List<Boat> _boats;
         private List<Motorcycle> _motorcycles;
         private List<IVehicle> _allVehicles;
+        public List<IVehicle> _allSavedVehicles;
 
         public Handler()
         {
@@ -23,6 +24,7 @@ namespace lab03
             _boats = new List<Boat>();
             _motorcycles = new List<Motorcycle>();
             _allVehicles = new List<IVehicle>();
+            _allSavedVehicles = new List<IVehicle>();
         }
         /// <summary>
         /// Simple function to print the menu, user can only advance in the menu by inputing 1,2,3,4 or 0
@@ -306,13 +308,15 @@ namespace lab03
             Filehandler fh = new Filehandler();
             List<string> dataRows = fh.GetSavedData();
             DataParser dp = new DataParser();
-            _allVehicles = dp.GetVehiclesFromSavedData(dataRows);
-            foreach (IVehicle currVehicle in _allVehicles)  //Put vehicle from in separate lists
+            _allSavedVehicles = dp.GetVehiclesFromSavedData(dataRows);
+            foreach (IVehicle currVehicle in _allSavedVehicles)  //Put vehicle from in separate lists
             {
                 if (currVehicle is Car) _cars.Add(currVehicle as Car);
                 if (currVehicle is Boat) _boats.Add(currVehicle as Boat);
                 if (currVehicle is Motorcycle) _motorcycles.Add(currVehicle as Motorcycle);
             }
+
+            Console.ReadKey();
         }
 
         public void Start()
