@@ -28,30 +28,6 @@ namespace lab03
         }
 
         /// <summary>
-        /// Loads the separate lists _cars, _boats, _motorcycles so they can be used in the program
-        /// </summary>
-        //private void LoadSeparateVehicleLists()
-        //{
-        //    foreach (IVehicle currVehicle in _allVehicles)  //Put vehicle from _allVehicles in separate lists
-        //    {
-        //        if (currVehicle is Car) _cars.Add(currVehicle as Car);
-        //        if (currVehicle is Boat) _boats.Add(currVehicle as Boat);
-        //        if (currVehicle is Motorcycle) _motorcycles.Add(currVehicle as Motorcycle);
-        //    }
-        //}
-
-        /// <summary>
-        /// Prepares the _allVehicle List with the updated data, so it can be used when saving to file
-        /// </summary>
-        //private void LoadFinalListToSave()
-        //{
-        //    _allVehicles.Clear();                       //Clear the list, 
-        //    _allVehicles.AddRange(_cars);               //and put the updated list of objects in it
-        //    _allVehicles.AddRange(_motorcycles);        //before sending it to functions for saving data
-        //    _allVehicles.AddRange(_boats);
-        //}
-
-        /// <summary>
         /// Simple function to print the menu, user can only advance in the menu by inputing 1,2,3,4 or 0
         /// </summary>
         static private void PrintBaseMenu()
