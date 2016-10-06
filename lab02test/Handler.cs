@@ -38,6 +38,7 @@ namespace lab03
             Console.WriteLine("2. Print/Create boats");
             Console.WriteLine("3. Print/Create motorcycles");
             Console.WriteLine("4. Print all vehicles in m/s");
+            Console.WriteLine("5. Search for vehicle");
             Console.WriteLine("Enter 0 to exit program.");
         }
         private void SetMenuChoice()
@@ -46,7 +47,7 @@ namespace lab03
             int input;
             parseTest = int.TryParse(Console.ReadLine(), out input);
             //Check if user input is between 0-4, throws exception if true
-            while (!parseTest || (input < 0 || input > 4))
+            while (!parseTest || (input < 0 || input > 5))
             {
                 Console.WriteLine("Incorrect input, please try again.");
                 PrintBaseMenu();
@@ -298,6 +299,68 @@ namespace lab03
             Console.WriteLine("\nPress any key to go back to main menu");
             Console.ReadKey();
         }
+
+
+        public void SearchVehicleByName()
+        {
+            int vehicleNameCounter = 0;
+            List<string> vehicleNameList = new List<string>();
+
+            //User input for name search
+            Console.Write("Enter name:");
+            string inputName = Console.ReadLine().ToLower();
+
+            //Search query for names in cars
+            var carName = from c in _cars
+                          where c.Name.ToLower().StartsWith(inputName)
+                          orderby c.Name
+                          select c;
+            if (carName.Count() > 0)           //Result title will only be shown if query gave results
+            {
+                vehicleNameList.Add("\n--Cars--");
+                foreach (Car c in carName)
+                {
+                    vehicleNameList.Add(c.Name + " - " + c.GetMetersPerSecond + " m/s");
+                    vehicleNameCounter++;
+                }
+            }
+            //Search query for names in Boats
+            var boatName = from b in _boats
+                           where b.Name.ToLower().StartsWith(inputName)
+                           orderby b.Name
+                           select b;
+            if (boatName.Count() > 0)           //Result title will only be shown if query gave results
+            {
+                vehicleNameList.Add("\n--Boats--");
+                foreach (Boat b in boatName)
+                {
+                    vehicleNameList.Add(b.Name + " - " + b.GetMetersPerSecond + " m/s");
+                    vehicleNameCounter++;
+                }
+            }
+            //Search query for names in Motorcyles
+            var motorcycleName = from m in _motorcycles
+                                 where m.Name.ToLower().StartsWith(inputName)
+                                 orderby m.Name
+                                 select m;
+            if (motorcycleName.Count() > 0)     //Result title will only be shown if query gave results
+            { 
+                vehicleNameList.Add("\n--Motorcycles--");
+                foreach (Motorcycle m in motorcycleName)
+                {
+                    vehicleNameList.Add(m.Name + " - " + m.GetMetersPerSecond + " m/s");
+                    vehicleNameCounter++;
+                }
+            }
+            Console.WriteLine("\nFound " + vehicleNameCounter + " vehicles.");
+            foreach (string Item in vehicleNameList)
+            {
+                Console.WriteLine(Item);        //printout of all results is performed here
+            }
+            Console.WriteLine("\nPress any key to go back to main menu");
+            Console.ReadKey();
+        }
+
         //Calls GetMetersPerSecond to show get M/S calculatios for each vehicle when menu number 4 was picked
         private void PrintSpeedInMetersPerSecond(IVehicle vehicleToPrint)
         {       
@@ -332,6 +395,8 @@ namespace lab03
                     executeAgain = false;               //Exits program
                 else if (_baseChoice == VehicleType.all)
                     PrintMsList();
+                else if (_baseChoice == VehicleType.search)
+                    SearchVehicleByName();
                 else
                 {
                     PrintListOfVehicle();

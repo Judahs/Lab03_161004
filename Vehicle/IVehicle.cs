@@ -14,5 +14,5 @@ namespace lab03
         double GetSpeed();
         string RandomNames();
     }
-    public enum VehicleType { unidentified, car, boat, motorcycle, all }
+    public enum VehicleType { unidentified, car, boat, motorcycle, all, search}
 }
