@@ -37,7 +37,7 @@ namespace lab03
             Console.WriteLine("3. Print/Create motorcycles");
             Console.WriteLine("4. Print all vehicles in m/s");
             Console.WriteLine("5. Search for vehicle");
-            Console.WriteLine("Enter 0 to exit program.");
+            Console.WriteLine("Enter 0 to save data to file and exit program.");
         }
         private void SetMenuChoice()
         {

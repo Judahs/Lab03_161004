@@ -36,7 +36,7 @@ namespace lab03
             }
             else
             {
-                throw new Exception("No data file found.");
+                throw new Exception("programdata.csv not found.");
             }
         }
         /// <summary>
