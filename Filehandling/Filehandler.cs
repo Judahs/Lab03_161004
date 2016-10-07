@@ -19,7 +19,7 @@ namespace lab03
         {
             //List<string> _allSavedVehicles = File.ReadLines(@"programdata.csv").ToList();
             List<string> _allSavedVehicles = new List<string>();
-            if (!File.Exists(@"programdata.csv"))
+            if (File.Exists(@"programdata.csv"))
             {
                 using (StreamReader sr = new StreamReader(@"programdata.csv"))
                 {

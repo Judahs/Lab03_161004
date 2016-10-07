@@ -372,14 +372,23 @@ namespace lab03
             Filehandler fh = new Filehandler();
             List<string> dataRows = fh.GetSavedData();
             DataParser dp = new DataParser();
-            _allSavedVehicles = dp.GetVehiclesFromSavedData(dataRows);
+            try
+            {
+                _allSavedVehicles = dp.GetVehiclesFromSavedData(dataRows);
+                Console.WriteLine("Data loaded from file.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Could not load data from file.");
+            }
             foreach (IVehicle currVehicle in _allSavedVehicles)  //Put vehicle from in separate lists
             {
                 if (currVehicle is Car) _cars.Add(currVehicle as Car);
                 if (currVehicle is Boat) _boats.Add(currVehicle as Boat);
                 if (currVehicle is Motorcycle) _motorcycles.Add(currVehicle as Motorcycle);
             }
-
+            Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
         }
 
