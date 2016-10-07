@@ -298,7 +298,9 @@ namespace lab03
             Console.ReadKey();
         }
 
-
+        /// <summary>
+        /// Uses LINQ query to perform search for names (string) of objects.
+        /// </summary>
         public void SearchVehicleByName()
         {
             int vehicleNameCounter = 0;
@@ -365,6 +367,9 @@ namespace lab03
             Console.Write(vehicleToPrint.GetMetersPerSecond);
         }
 
+        /// <summary>
+        /// Method that 
+        /// </summary>
         public void GetData()
         { 
             try
@@ -390,15 +395,19 @@ namespace lab03
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// The primary part of the program that handles the execution of underlying methods.
+        /// A loop countinues as long as a bool value is false.
+        /// </summary>
         public void Start()
         {
-            bool executeAgain = true;
-            while (executeAgain)
+            bool quitProgram = false;
+            while (!quitProgram)
             {
                 PrintBaseMenu();
                 SetMenuChoice();
                 if (_baseChoice == VehicleType.unidentified)
-                    executeAgain = SaveData();           //Saves data and exits program
+                    quitProgram = SaveData();           //Saves data and exits program if data where saved without problem.
                 else if (_baseChoice == VehicleType.all)
                     PrintMsList();
                 else if (_baseChoice == VehicleType.search)
@@ -413,7 +422,7 @@ namespace lab03
                         try
                         {
                             ChosenVehicleInfoMenu();
-                            if (_newSpeed == -1)            //Means user pressed "-"
+                            if (_newSpeed == -1)        //Means user pressed "-"
                                 RemoveVehicle();
                             else
                                 ChangeVehicle();
@@ -431,9 +440,9 @@ namespace lab03
 
         /// <summary>
         /// Perform actions to parse the objects to stings and then save the data in a file. If no exeption occurs, the program
-        /// will quit. The program will not quit if exeption occurs (in that case it will return "true" to "executeAgain"=.
+        /// will quit. The program will not quit if exeption occurs (in that case it will return "false" to "executeAgain"=.
         /// </summary>
-        /// <returns>"False" if no exeption has been thrown.</returns>
+        /// <returns>"True" if no exeption has been thrown.</returns>
         public bool SaveData()
         {
             _allVehicles.Clear();                       //Clear the list, so it can be used for the new objects
@@ -452,12 +461,12 @@ namespace lab03
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Press any key to go back to program.");
                 Console.ReadKey();
-                return true;
+                return false;
             }
             Console.WriteLine("Data saved to file.");
             Console.WriteLine("Press any key to exit program.");
             Console.ReadKey();
-            return false;
+            return true;
         }
     }
 }
