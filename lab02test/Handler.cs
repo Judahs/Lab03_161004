@@ -15,7 +15,6 @@ namespace lab03
         private List<Boat> _boats;
         private List<Motorcycle> _motorcycles;
         private List<IVehicle> _allVehicles;
-        public List<IVehicle> _allSavedVehicles;
 
         public Handler()
         {
@@ -24,7 +23,6 @@ namespace lab03
             _boats = new List<Boat>();
             _motorcycles = new List<Motorcycle>();
             _allVehicles = new List<IVehicle>();
-            _allSavedVehicles = new List<IVehicle>();
         }
 
         /// <summary>
@@ -368,14 +366,13 @@ namespace lab03
         }
 
         public void GetData()
-        {
-            
+        { 
             try
             {
                 Filehandler fh = new Filehandler();
                 List<string> dataRows = fh.GetSavedData();
                 DataParser dp = new DataParser();
-                _allSavedVehicles = dp.GetVehiclesFromSavedData(dataRows);
+                _allVehicles = dp.GetVehiclesFromSavedData(dataRows);
                 Console.WriteLine("Data loaded from file.");
             }
             catch (Exception ex)
@@ -383,7 +380,7 @@ namespace lab03
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("No data loaded from file.");
             }
-            foreach (IVehicle currVehicle in _allSavedVehicles)  //Put vehicle from in separate lists
+            foreach (IVehicle currVehicle in _allVehicles)  //Put vehicle from in separate lists
             {
                 if (currVehicle is Car) _cars.Add(currVehicle as Car);
                 if (currVehicle is Boat) _boats.Add(currVehicle as Boat);
@@ -434,10 +431,8 @@ namespace lab03
         }
         public void SaveData()
         {
-
-            //_allVehicles.Clear();                       //Clear the list, 
-            //var _allVehicles = _cars.Cast<IVehicle>().Concat(_boats.Cast<IVehicle>()).Concat(_motorcycles.Cast<IVehicle>());
-            //Put all list in to one list of IVehicle objects
+            _allVehicles.Clear();                       //Clear the list, so it can be used for the new objects
+            //Add all different vehicles in the same list of type "IVehicle"
             _allVehicles.AddRange(_cars.Cast<IVehicle>().Concat(_boats.Cast<IVehicle>()).Concat(_motorcycles.Cast<IVehicle>()));
 
             DataParser dp = new DataParser();
