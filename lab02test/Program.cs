@@ -16,7 +16,6 @@ namespace lab03
             {
                 doIt.GetData();
                 doIt.Start();
-                doIt.SaveData();
             }
             //If an exception isnt handle by the program then this will show instead
             catch (Exception ex)

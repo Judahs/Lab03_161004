@@ -393,13 +393,12 @@ namespace lab03
         public void Start()
         {
             bool executeAgain = true;
-
             while (executeAgain)
             {
                 PrintBaseMenu();
                 SetMenuChoice();
                 if (_baseChoice == VehicleType.unidentified)
-                    executeAgain = false;               //Exits program
+                    executeAgain = SaveData();           //Saves data and exits program
                 else if (_baseChoice == VehicleType.all)
                     PrintMsList();
                 else if (_baseChoice == VehicleType.search)
@@ -429,7 +428,13 @@ namespace lab03
                 }
             }
         }
-        public void SaveData()
+
+        /// <summary>
+        /// Perform actions to parse the objects to stings and then save the data in a file. If no exeption occurs, the program
+        /// will quit. The program will not quit if exeption occurs (in that case it will return "true" to "executeAgain"=.
+        /// </summary>
+        /// <returns>"False" if no exeption has been thrown.</returns>
+        public bool SaveData()
         {
             _allVehicles.Clear();                       //Clear the list, so it can be used for the new objects
             //Add all different vehicles in the same list of type "IVehicle"
@@ -440,15 +445,19 @@ namespace lab03
             Filehandler fh = new Filehandler();
             try
             {
-                fh.SaveData(listOfRowsToSave);
+                fh.WriteToFile(listOfRowsToSave);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine("Press any key to exit program.");
+                Console.WriteLine("Press any key to go back to program.");
                 Console.ReadKey();
+                return true;
             }
-            
+            Console.WriteLine("Data saved to file.");
+            Console.WriteLine("Press any key to exit program.");
+            Console.ReadKey();
+            return false;
         }
     }
 }

@@ -8,6 +8,12 @@ namespace lab03
 {
     public class DataParser
     {
+        /// <summary>
+        /// Parses data from list of string to list of IVehicle objects. Uses "string.Split" method to divide string into
+        /// type of Vehicle, speed and name.
+        /// </summary>
+        /// <param name="dataRows">List of strings from readed file</param>
+        /// <returns>List of Vehicles (objects).</returns>
         public List<IVehicle> GetVehiclesFromSavedData(List<string> dataRows)
         {
             List<IVehicle> incomingVehicles = new List<IVehicle>();

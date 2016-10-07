@@ -10,9 +10,9 @@ namespace lab03
     public class Filehandler
     {
         /// <summary>
-        /// Checks if the files exist or else it will crash during start
-        /// if file exist then it will read each line and add it to _allSavedVehicles
-        /// if not then it will just return an empty list
+        /// Checks if the files exist or else it will throw exeption during start
+        /// If file exist then it will read each line and add it to _allVehicles
+        /// If file is empty an other exeption will be thrown
         /// </summary>
         /// <returns></returns>
         public List<string> GetSavedData()
@@ -39,7 +39,11 @@ namespace lab03
                 throw new Exception("No data file found.");
             }
         }
-        public void SaveData(List<string> listOfRowsToSave)
+        /// <summary>
+        /// Opens a file and writes the data so it from a list of strings.
+        /// </summary>
+        /// <param name="listOfRowsToSave">Data parsed from vehicle objects</param>
+        public void WriteToFile(List<string> listOfRowsToSave)
         {
             try
             {
