@@ -26,7 +26,7 @@ namespace lab03
         }
 
         /// <summary>
-        /// Simple function to print the menu, user can only advance in the menu by inputing 1,2,3,4 or 0
+        /// Simple function to print the menu, user can only advance in the menu by inputing 1,2,3,4,5 or 0
         /// </summary>
         static private void PrintBaseMenu()
         {
