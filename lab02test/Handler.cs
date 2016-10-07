@@ -426,7 +426,9 @@ namespace lab03
         {
 
             //_allVehicles.Clear();                       //Clear the list, 
-            var _allVehicles = _cars.Cast<IVehicle>().Concat(_boats.Cast<IVehicle>()).Concat(_motorcycles.Cast<IVehicle>());
+            //var _allVehicles = _cars.Cast<IVehicle>().Concat(_boats.Cast<IVehicle>()).Concat(_motorcycles.Cast<IVehicle>());
+            //Put all list in to one list of IVehicle objects
+            _allVehicles.AddRange(_cars.Cast<IVehicle>().Concat(_boats.Cast<IVehicle>()).Concat(_motorcycles.Cast<IVehicle>()));
 
             DataParser dp = new DataParser();
             List<string> listOfRowsToSave = dp.CreateDataToSaveFromList(_allVehicles);
