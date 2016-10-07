@@ -369,18 +369,19 @@ namespace lab03
 
         public void GetData()
         {
-            Filehandler fh = new Filehandler();
-            List<string> dataRows = fh.GetSavedData();
-            DataParser dp = new DataParser();
+            
             try
             {
+                Filehandler fh = new Filehandler();
+                List<string> dataRows = fh.GetSavedData();
+                DataParser dp = new DataParser();
                 _allSavedVehicles = dp.GetVehiclesFromSavedData(dataRows);
                 Console.WriteLine("Data loaded from file.");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine("Could not load data from file.");
+                Console.WriteLine("No data loaded from file.");
             }
             foreach (IVehicle currVehicle in _allSavedVehicles)  //Put vehicle from in separate lists
             {

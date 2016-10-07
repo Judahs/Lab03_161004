@@ -24,6 +24,8 @@ namespace lab03
                 using (StreamReader sr = new StreamReader(@"programdata.csv"))
                 {
                     string line = sr.ReadLine();
+                    if (line == null)
+                        throw new Exception("Data file is empty.");
                     while (line != null)
                     {
                         _allSavedVehicles.Add(line);     //Read from file, add rows as long as possible
@@ -34,7 +36,7 @@ namespace lab03
             }
             else
             {
-                return _allSavedVehicles;
+                throw new Exception("No data file found.");
             }
         }
         public void SaveData(List<string> listOfRowsToSave)
